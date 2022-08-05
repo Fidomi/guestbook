@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
-#[Serializer\ExclusionPolicy(['all'])]
+#[Serializer\ExclusionPolicy('all')]
 class Comment
 {
     #[ORM\Id]
