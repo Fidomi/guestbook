@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 #[ORM\Entity(repositoryClass: ConferenceRepository::class)]
 #[UniqueEntity('slug')]
@@ -16,21 +17,27 @@ class Conference
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Serializer\Groups(['details'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Serializer\Groups(['details'])]
     private string $city;
 
     #[ORM\Column(length: 255)]
+    #[Serializer\Groups(['details'])]
     private string $name;
 
     #[ORM\Column]
+    #[Serializer\Groups(['details'])]
     private int $year;
 
     #[ORM\Column]
+    #[Serializer\Groups(['details'])]
     private bool $isInternational;
 
     #[ORM\Column(length: 255)]
+    #[Serializer\Groups(['details'])]
     private string $slug = '-';
 
     #[ORM\OneToMany(mappedBy: 'conference', targetEntity: Comment::class, orphanRemoval: true)]

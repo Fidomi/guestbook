@@ -5,37 +5,30 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
-#[Serializer\ExclusionPolicy('all')]
 class Comment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Serializer\Expose]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Serializer\Expose]
     #[Assert\NotBlank]
     private string $text;
 
     #[ORM\Column(type: 'datetime')]
-    #[Serializer\Expose]
     #[Assert\NotBlank]
     private $createdAt;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Serializer\Expose]
     private User $user;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Serializer\Expose]
     private Conference $conference;
 
     public function getId(): ?int

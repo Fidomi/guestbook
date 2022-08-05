@@ -35,13 +35,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    #[Serializer\Groups(['detail'])]
     #[Assert\NotBlank]
+    #[Serializer\Groups(['user_details'])]
     private string $firstname;
 
     #[ORM\Column(length: 255)]
-    #[Serializer\Groups(['detail'])]
     #[Assert\NotBlank]
+    #[Serializer\Groups(['user_details'])]
     private string $lastname;
 
     #[ORM\Column(length: 255, nullable: true)]

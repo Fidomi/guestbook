@@ -1,38 +1,25 @@
 # Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
 fos_rest:
-#    param_fetcher_listener:  true
-#    allowed_methods_listener:  true
-##    routing_loader: true
-#    view:
-#      formats: {json: true, xml: false, rss: false}
-#      view_response_listener:  'force'
-#    serializer:
-#        serialize-null: true
-##    body_listener: true
-#    body_converter:
-#        enabled: true
-#        validate: true
-#        validation_errors_argument: violations
-#    exception:
-#        enabled: true
-#        codes:
-#          { App\Exception\ResourceValidationException: 400, \Exception: 500}
-#        messages:
-#          { App\Exception\ResourceValidationException: true }
-#    format_listener:
-#        enabled: true
-#        rules:
-#            - { path: '^/', priorities: [ 'json' ] , fallback_format: 'json' }
-
-
-        param_fetcher_listener: false # set a true !!
-        allowed_methods_listener: true
-        body_listener: true
-        serializer:
-            serialize_null: true
-        view:
-            view_response_listener: 'force'
-        format_listener:
-            enabled: true
-            rules:
-                - { path: ^/, prefer_extension: true, fallback_format: json, priorities: [ json ] }
+    param_fetcher_listener:  true
+    allowed_methods_listener:  true
+#    routing_loader: true
+    view:
+      formats: {json: true, xml: false, rss: false}
+      view_response_listener:  'force'
+    serializer:
+        serialize-null: true
+#    body_listener: true
+    body_converter:
+        enabled: true
+        validate: true
+        validation_errors_argument: violations
+    exception:
+        enabled: true
+        codes:
+          { App\Exception\ResourceValidationException: 400, \Exception: 500}
+        messages:
+          { App\Exception\ResourceValidationException: true }
+    format_listener:
+        enabled: true
+        rules:
+            - { path: '^/', priorities: [ 'json' ] , fallback_format: 'json' }

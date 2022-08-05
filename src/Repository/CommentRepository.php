@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Comment;
 use App\Entity\Conference;
 use AppBundle\Repository\AbstractRepository;
+use ContainerKVjngPC\getConferenceRepositoryService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -25,22 +26,24 @@ use Pagerfanta\Doctrine\Collections\CollectionAdapter;
  */
 class CommentRepository extends AbstractRepository
 {
+
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Comment::class);
     }
 
-    public function search($conf, $order = 'asc', $limit = 20, $offset = 0) {
+    public function search($conf, $order = 'ASC', $limit = 20, $offset = 0) {
+        $searched_conference = $this->getEntityManager()->getRepository(Conference::class)->findOneBy(['slug'=>$conf]);
         $query = $this->createQueryBuilder('c')
-            ->andWhere('c.conference = :conference')
-            ->setParameter('conference', $conf)
+            ->andWhere('c.conference = :conf')
+            ->setParameter('conf', $searched_conference)
             ->orderBy('c.createdAt', strtoupper($order))
             ->setMaxResults($limit)
-            ->setFirstResult($offset)
+            ->setFirstResult($offset-1)
             ->getQuery()
         ;
         $adapter = new CollectionAdapter(new ArrayCollection($query->getResult()));
-
         return $this->paginate($adapter, $limit, $offset);
     }
 

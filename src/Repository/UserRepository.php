@@ -56,6 +56,12 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->add($user, true);
     }
 
+    public function findUserFullName (User $entity) {
+        $firstName = $entity->getFirstname();
+        $lastName = $entity->getLastname();
+        return $firstName.' '.$lastName;
+    }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

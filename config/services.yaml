@@ -41,3 +41,8 @@ services:
         arguments: []
         tags:
             - { name: 'console.command'}
+
+    serializer_handler.article:
+        class: App\Serializer\Handler\CommentHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler }
