@@ -20,12 +20,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Serializer\Groups(['user_all_details'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Serializer\Groups(['user_all_details'])]
     private ?string $email = null;
 
     #[ORM\Column]
+    #[Serializer\Groups(['user_all_details'])]
     private array $roles = [];
 
     /**
@@ -36,18 +39,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Serializer\Groups(['user_details'])]
+    #[Serializer\Groups(['user_details','user_all_details'])]
     private string $firstname;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Serializer\Groups(['user_details'])]
+    #[Serializer\Groups(['user_details','user_all_details' ])]
     private string $lastname;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Serializer\Groups(['user_all_details' ])]
     private ?string $picture = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Serializer\Groups(['user_all_details' ])]
     private ?string $biography = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
