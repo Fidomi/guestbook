@@ -154,4 +154,11 @@ class UserController extends AbstractFOSRestController
         }
     }
 
+    #[Rest\Get('/logout', name: 'app_logout')]
+    public function logout()
+    {
+        // controller can be blank: it will never be called!
+        throw new \Exception('Don\'t forget to activate logout in security.yaml');
+    }
+
 }
