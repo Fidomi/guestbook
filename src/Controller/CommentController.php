@@ -9,7 +9,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcherInterface;
-use FOS\RestBundle\View\View;
 use App\Repository\CommentRepository;
 use App\Representation\Comments;
 use PHPUnit\Util\Exception;
@@ -19,9 +18,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use JMS\Serializer\SerializerBuilder as SerializerBuilder;
-use JMS\Serializer\SerializationContext;
-use function PHPUnit\Framework\throwException;
 
 
 class CommentController extends AbstractFOSRestController
