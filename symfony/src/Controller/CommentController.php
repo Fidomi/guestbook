@@ -48,10 +48,10 @@ class CommentController extends AbstractFOSRestController
     }
 
     #[Rest\Get('/comments', name: 'comments_show_all')]
-    #[Rest\QueryParam(name:'conf', requirements:'[a-z\-]+', nullable:false, description: 'The slug of the conference to search comments from')]
+    #[Rest\QueryParam(name:'conf', requirements:'[a-z\-\d]+', nullable:false, description: 'The slug of the conference to search comments from')]
     #[Rest\QueryParam(name:'order', requirements:'asc|desc', default:'asc', description: 'Sort order')]
-    #[Rest\QueryParam(name:'limit', requirements:'[\d+]', default:15, description: 'Max number of comments per page')]
-    #[Rest\QueryParam(name:'offset', requirements:'[\d+]', default:1, description: 'The pagination offset')]
+    #[Rest\QueryParam(name:'limit', requirements:'[\d]+', default:15, description: 'Max number of comments per page')]
+    #[Rest\QueryParam(name:'offset', requirements:'[\d]+', default:1, description: 'The pagination offset')]
     #[Rest\View]
     public function getCommentsByConference(CommentRepository $commentRepository, ParamFetcherInterface $paramFetcher)
     {
