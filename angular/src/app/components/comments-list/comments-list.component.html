@@ -1,0 +1,8 @@
+<div class="container main_container" *ngIf="comments">
+  <div *ngFor="let comment of comments">
+    <div class="tile is-vertical box">
+      <div class="comment">{{comment.text}}</div>
+      <div class="author is-primary">{{comment.author|uppercase}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container" *ngIf="conference">
+  <table class="table">
+    <tr>
+      <th >NAME</th>
+      <th class="is-primary">{{conference.name}}</th>
+    </tr>
+    <tr>
+      <th>CITY</th>
+      <th class="is-primary">{{conference.city}}</th>
+    </tr>
+    <tr>
+      <th>YEAR</th>
+      <th class="is-primary">{{conference.year}}</th>
+    </tr>
+    <tr>
+      <th>IS INTERNATIONAL</th>
+      <th class="is-primary">{{conference.isInternational ? "yes" : "no"}}</th>
+    </tr>
+  </table>
+  <app-comments-list [conference]="conference"></app-comments-list>
+</div>
+
