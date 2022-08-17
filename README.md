@@ -2,8 +2,9 @@
 
 Pour accéder au projet en local :
 
-1/ Créer une bdd guestbookv2 et configurer les variables de bdd dans le dossier symfony
-`DATABASE_URL=mysql://<user>:<password>@sql:<port>/guestbookv2?serverVersion=5.7`
+1/ Créer une bdd et configurer les variables de bdd dans le dossier symfony.
+Example : `DATABASE_URL=mysql://<user>:<password>@sql:<port>/guestbookv2?serverVersion=5.7`
+Pour créer un premier user utiliser la commande : `app:add-user`
 
 2/ Lancer le serveur symfony
 `cd symfony`
