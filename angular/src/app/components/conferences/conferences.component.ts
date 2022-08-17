@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Conference, ConferenceType} from "../../models/conference";
+import { ConferenceType} from "../../models/conference";
 import {ConferenceService} from "../../services/conference.service";
 import { faEye } from '@fortawesome/free-regular-svg-icons';
 import {Icon, IconDefinition} from "@fortawesome/fontawesome-svg-core";
@@ -13,8 +13,6 @@ export class ConferencesComponent implements OnInit {
 
   conferences: ConferenceType[] = [];
   faEye : IconDefinition = faEye;
-  selectedConference?: ConferenceType;
-
   constructor(private conferenceService: ConferenceService) {
   }
 

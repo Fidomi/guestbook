@@ -1,22 +1,26 @@
-<h2>Conférences</h2>
-<table class="table is-bordered">
-  <thead>
-  <tr>
-    <th>NAME</th>
-    <th>CITY</th>
-    <th>YEAR</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let conference of conferences">
-      <td>{{ conference.name }}</td>
-      <td>{{ conference.city }}</td>
-      <td>{{ conference.year }}</td>
-      <td>
-        <a class="button is-link is-primary" [routerLink]="['/conferences',conference.id]" [title]="conference.name + 'details'">
-          <fa-icon [icon]="faEye"></fa-icon>
-        </a>
-      </td>
+<div class="container">
+  <div class="box">
+    <h2 class="subtitle is-spaced">Conferences</h2>
+  </div>
+  <table class="table is-bordered">
+    <thead>
+    <tr>
+      <th>NAME</th>
+      <th>CITY</th>
+      <th>YEAR</th>
     </tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <tr *ngFor="let conference of conferences">
+        <td>{{ conference.name }}</td>
+        <td>{{ conference.city }}</td>
+        <td>{{ conference.year }}</td>
+        <td>
+          <a class="button is-black" [routerLink]="['/conferences',conference.id]" [title]="conference.name + 'details'">
+            <fa-icon [icon]="faEye"></fa-icon>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

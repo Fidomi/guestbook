@@ -15,7 +15,11 @@ export class ConferenceService {
 
   getConferenceList = (): Observable<any> => {
     const result = this.http.get('/backend/conferences');
-    console.log("conferences", result);
+    return result;
+  }
+
+  getConferenceDetails = (id: number): Observable<any> => {
+    const result = this.http.get(`/backend/conferences/${id}`);
     return result;
   }
 

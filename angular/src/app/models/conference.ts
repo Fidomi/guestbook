@@ -4,6 +4,7 @@ export interface ConferenceType {
   year: string;
   city: string;
   isInternational: boolean;
+  slug: string;
 }
 
 export class Conference {
@@ -12,6 +13,7 @@ export class Conference {
   year: string;
   city: string;
   isInternational: boolean;
+  slug: string;
 
   constructor(conference : ConferenceType) {
     this.id = conference.id;
@@ -19,5 +21,6 @@ export class Conference {
     this.year = conference.year;
     this.city = conference.city;
     this.isInternational = conference.isInternational;
+    this.slug = conference.slug;
   }
 }
