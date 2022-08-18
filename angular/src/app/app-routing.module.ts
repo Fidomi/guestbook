@@ -7,7 +7,7 @@ import { ConferenceDetailsComponent} from "./components/conference-details/confe
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'conferences', component:ConferencesComponent},
-  {path: 'conferences/:conferenceId', component:ConferenceDetailsComponent}
+  {path: 'conferences/:conferenceId', component:ConferenceDetailsComponent},
 ];
 
 @NgModule({
