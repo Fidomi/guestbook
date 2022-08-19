@@ -24,11 +24,17 @@
 
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-black">
+            <a class="button is-black" *ngIf="!loggedIn">
               <strong class="is-light">Sign up</strong>
             </a>
-            <button class="button is-light js-modal-trigger" data-target="user-login-modal">
+            <button class="button is-light js-modal-trigger" data-target="user-login-modal" *ngIf="!loggedIn">
               Log in
+            </button>
+            <a class="button is-black" *ngIf="loggedIn" >
+              <strong class="is-light">User Details</strong>
+            </a>
+            <button class="button is-black" *ngIf="loggedIn" (click)="logout()">
+              Log Out
             </button>
           </div>
         </div>

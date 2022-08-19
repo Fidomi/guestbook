@@ -11,6 +11,7 @@ import { CommentsListComponent } from './components/comments-list/comments-list.
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserLoginEditorComponent } from './components/user-login-editor/user-login-editor.component';
 import { UserSignUpComponent } from './components/user-sign-up/user-sign-up.component';
+import {HomeComponent} from "./components/home/home.component";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UserSignUpComponent } from './components/user-sign-up/user-sign-up.comp
     CommentsListComponent,
     UserDetailsComponent,
     UserLoginEditorComponent,
-    UserSignUpComponent
+    UserSignUpComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

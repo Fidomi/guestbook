@@ -45,10 +45,23 @@ class UserController extends AbstractFOSRestController
         }
     }
 
-    #[Rest\Get('/api/users/{id}', name: 'user_show', requirements:['id'=>'\d+'])]
+    #[Rest\Get('/api/users/{id}', name: 'user_id_show', requirements:['id'=>'\d'])]
     #[Rest\View(serializerGroups: ['user_all_details'])]
     #[IsGranted('ROLE_ADMIN')]
     public function showUser(User $user)
+    {
+        try {
+            return $user;
+        } catch (Exception $exception) {
+            $view = $this->view($exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+            return $this->handleView($view);
+        }
+    }
+
+    #[Rest\Get('/api/users/email/{email}', name: 'user_show')]
+    #[Rest\View(serializerGroups: ['user_all_details'])]
+    #[IsGranted('ROLE_USER')]
+    public function showCurrentUser(User $user)
     {
         try {
             return $user;
@@ -87,12 +100,16 @@ class UserController extends AbstractFOSRestController
              $user->setPassword($hashedPassword);
              $user->setPicture($params->picture);
              $user->setRoles(["ROLE_USER"]);
+             $user->setEmail($params->email);
+             $user->setFirstname($params->firstname);
+             $user->setLastname($params->lastname);
+             $user->setBiography($params->biography);
              $this->managerRegistry->getRepository(User::class)->add($user,true);
              return $this->view(
                  $user,
                  Response::HTTP_CREATED,
                  [
-                     'Location' => $this->generateUrl('user_show', ['id' => $user->getId()], UrlGeneratorInterface::ABSOLUTE_URL)
+                     'Location' => $this->generateUrl('user_id_show', ['id' => $user->getId()], UrlGeneratorInterface::ABSOLUTE_URL)
                  ],
              );
          } catch (Exception $exception) {

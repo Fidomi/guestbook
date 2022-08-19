@@ -1,21 +1,21 @@
 export interface UserType {
-  firstname: string;
-  lastname: string;
+  firstname ?: string;
+  lastname ?: string;
   email: string;
-  biography: string;
-  picture: string;
-  role: string[];
-  password: string
+  biography ?: string;
+  picture ?: string;
+  role ?: string[];
+  password ?: string
 }
 
 export class User {
-  firstname: string;
-  lastname: string;
+  firstname ?: string;
+  lastname ?: string;
   email: string;
-  biography: string;
-  picture: string;
-  role: string[];
-  password: string
+  biography ?: string|null;
+  picture ?: string|null;
+  role ?: string[];
+  password ?: string
 
   constructor(user : UserType) {
     this.firstname = user.firstname;

@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Functions to open and close a modal
   function openModal(element) {
-    console.log("element", element);
     element.classList.add('is-active');
   }
 
